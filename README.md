@@ -71,7 +71,7 @@ Provide instructions on how to use the application, including examples of common
 ## Video Overview
 Watch this video for a brief overview of "My Scheduler" and its functionalities: 
 <video width="600" controls>
-  <source src="https://drive.google.com/uc?id=1cpxrrZ2IVAiJ4ZeC9oUqrka1WZs34MNb" type="video/mp4">
+  <source src="Video.mp4" type="video/mp4">
   [the video](https://drive.google.com/uc?id=1cpxrrZ2IVAiJ4ZeC9oUqrka1WZs34MNb)
 </video>
 ## Acknowledgments
