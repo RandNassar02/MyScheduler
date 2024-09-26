@@ -9,8 +9,6 @@
 - [Functional Requirements](#functional-requirements)
 - [Technologies Used](#technologies-used)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 - [Video Overview](#video-overview)
 - [Acknowledgments](#acknowledgments)
 
@@ -71,10 +69,7 @@ The development of "My Scheduler" follows the **Waterfall Process Model**, ensur
 Provide instructions on how to use the application, including examples of common tasks.
 
 ## Video Overview
-Watch this video for a brief overview of "My Scheduler" and its functionalities: [Video.mp4](https://github.com/RandNassar02/MyScheduler/blob/master/Video.mp4).
-
-## Contributing
-Contributions are welcome! Please follow these guidelines for contributing to the project.
+Watch this video for a brief overview of "My Scheduler" and its functionalities: [Video.mp4] (https://drive.google.com/file/d/1cpxrrZ2IVAiJ4ZeC9oUqrka1WZs34MNb/view?usp=sharing) .
 
 ## Acknowledgments
 Special thanks to my friend ( https://github.com/RandBuzieh ) for their support and contributions to this project.
