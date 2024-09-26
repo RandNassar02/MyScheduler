@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Scheduler</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyGP2webapp.styles.css" asp-append-version="true" />
+
+    <!-- icon link -->      
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+    <style>
+        .nav-item .nav-link[data-title]:hover::after {
+            content: attr(data-title);
+            background-color: #5AA9E6;
+            color: #fff;
+            z-index: 100;
+            left: 30%;
+            transform: translatex(-2%);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="main-container d-flex">
+        <div class="sidebar" id="side_nav">
+            <!-- Logo -->
+            <div class="header-box px-2 pt-4 d-flex justify-content-between">
+                <p class="logo">
+                    <span class="text-white">My Scheduler</span>
+                </p>
+
+                <button class="btn d-md-none d-block close-btn px-1 py-0 text-white">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+
+            <!-- Profile -->
+            <a class="nav-link text-dark active" asp-area="" asp-controller="Student" asp-action="PersonalPage">
+                <div class="profile">
+                    <div class="profile-circle">
+                        @TempData["MasgName"]
+                        @{
+                            TempData.Keep("MasgName");
+                        }
+                    </div>
+                </div>
+            </a>
+
+            <div class="os-content">
+                <footer class="text-center">
+                    <!-- Navigation -->
+                    <ul class="menu list-unstyled">
+                        <!-- Home link -->
+                        <li class="nav-item sid-link">
+                            <a class="nav-link text-dark active" asp-area="" asp-controller="Home" asp-action="index" data-title="Schedule">
+                                <span class="sidIcon"><i class="fa-solid fa-calendar-days"></i></span>
+                            </a>
+                        </li>
+
+                        <!-- My saved link -->
+                        <li class="nav-item sid-link">
+                            <a class="nav-link text-dark active" asp-area="" asp-controller="Student" asp-action="viewWishlist" data-title="Wishlist">
+                                <span class="sidIcon"><i class="fas fa-heart"></i></span>
+                            </a>
+                        </li>
+
+                        <!-- Logout link -->
+                        <li class="nav-item sid-link">
+                            <a class="nav-link text-dark active" asp-area="" asp-controller="Student" asp-action="Login" data-title="Logout">
+                                <span class="sidIcon"><i class="fas fa-sign-out-alt"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+
+        <div class="content">
+            <nav class="navbar navbar-expand-md">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between d-md-none ">
+                        <button class="btn px-1 py-0 open-btn me-2 text-black"><i class="fa-solid fa-bars"></i> </button>
+                        <a class="navbar-brand fs-4" href="#"></a>
+                    </div>
+                </div>
+            </nav>
+            <div class="nav-shadow"></div>
+
+
+            <!--Main-->
+            <div class="dashboard-content px-3 pt-4">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(".sidebar ul li").on('click', function () {
+            $(".sidebar ul li.active").removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $('.open-btn').on('click', function () {
+            $('.sidebar').addClass('active');
+
+        });
+
+        $('.close-btn').on('click', function () {
+            $('.sidebar').removeClass('active');
+
+        })
+    </script>
+</body>
+</html>

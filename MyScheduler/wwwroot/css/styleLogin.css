@@ -1,0 +1,143 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #5AA9E6;
+    opacity: 1;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #5AA9E6 0.2px ), repeating-linear-gradient( #8accff55, #8accff );
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 2;
+    color: black;
+}
+
+p {
+    font-size: 14px;
+    margin: 10px 0 50px;
+    color: black;
+}
+
+span {
+    font-size: 16px;
+    margin-bottom: 16;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    height: 100%;
+}
+
+input {
+    background-color: #eee;
+    border: 1px solid #eee;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+    border-radius: 10px;
+    transition: border-color 0.8s ease;
+}
+
+    input:focus {
+        border-color: #5AA9E6;
+    }
+
+.Loginbutton {
+    width: 50%;
+    background-color: white;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 0.2em solid #5AA9E6;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    color: #5AA9E6;
+    border-radius: 0.5em;
+}
+
+    .Loginbutton:hover, .Loginbutton:focus {
+        color: white;
+        background-color: #5AA9E6;
+    }
+
+        .Loginbutton:hover:before, .Loginbutton:focus:before {
+            transition: 0.5s all ease;
+            left: 0;
+            right: 0;
+            opacity: 1;
+        }
+
+    .Loginbutton:active {
+        transform: scale(0.9);
+    }
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.form-container {
+    position: absolute;
+    top: 10;
+    height: 100%;
+}
+
+.sign-in-container {
+    width: 50%;
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.overlay {
+    background: ##fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+}
+
+.overlay-right {
+    right: 0;
+}

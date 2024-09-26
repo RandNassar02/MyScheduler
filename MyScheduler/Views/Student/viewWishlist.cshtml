@@ -1,0 +1,134 @@
+﻿@model MyGP2webapp.Models.Student
+<style>
+    .small-title {
+        color: #5AA9E6;
+        font-size: 1.2em;
+        height: var(--small-title-height);
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .product-links {
+        text-align: right;
+    }
+
+        .product-links i {
+            display: inline-block;
+            margin-left: 4px;
+            color: #484f53;
+            transition: 0.3s;
+            font-size: 1.2em;
+        }
+
+            .product-links i:hover {
+                color: #5AA9E6;
+            }
+</style>
+<div>
+    <h2 class="small-title">
+        <b>My Wishlist</b>
+    </h2>
+    @if (Model.schedules.Any(sc => sc.Approv_Schedule == 2))
+    {
+        // Group sections by IDScedule
+        var groupedSections = Model.schedules
+        .Where(sc => sc.Approv_Schedule == 2)
+        .SelectMany(sc => sc.sectionSchedules)
+        .GroupBy(ss => ss.schedule);
+
+
+
+        foreach (var group in groupedSections)
+        {
+            <div class="card mb-3">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Course</th>
+                                <th class="text-center">Section</th>
+                                <th class="text-center">Hall</th>
+                                <th class="text-center">Teacher Name</th>
+                                <th class="text-center">Sun</th>
+                                <th class="text-center">Mon</th>
+                                <th class="text-center">Tues</th>
+                                <th class="text-center">Wed</th>
+                                <th class="text-center">Thu</th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sectionSchedule in group)
+                            {
+                                <tr class="sem-20232">
+                                    <td class="text-center">@sectionSchedule.section?.course?.CRS_A_NAME</td>
+                                    <td class="text-center">@sectionSchedule.section?.SectionNumber</td>
+                                    <td class="text-center">@sectionSchedule.section?.Hall</td>
+                                    <td class="text-center">@sectionSchedule.section?.Instructors?.Name</td>
+                                    <td class="text-center">@sectionSchedule.section?.Start_Sunday?.ToString("HH:mm")</td>
+                                    <td class="text-center">@sectionSchedule.section?.Start_Monday?.ToString("HH:mm")</td>
+                                    <td class="text-center">@sectionSchedule.section?.Start_Tuesday?.ToString("HH:mm")</td>
+                                    <td class="text-center">@sectionSchedule.section?.Start_Wednesday?.ToString("HH:mm")</td>
+                                    <td class="text-center">@sectionSchedule.section?.Start_Thursday?.ToString("HH:mm")</td>
+                                    <td class="text-center">@sectionSchedule.section?.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="card-footer product-links">
+                    <table>
+                        <tr>
+                            <td>
+                                <form asp-controller="Student" asp-action="RemoveSchedules">
+                                    @foreach (var sectionSchedule in group)
+                                    {
+
+                                        @foreach (var sec in group)
+                                        {
+                                            @Html.Hidden("scheduleIds", sec.schedule.IDScedule)
+                                        }
+
+                                    }
+                                    <button type="submit" onclick="Remove()" style="border: none; background: none;"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-controller="Student" asp-action="WishlistRegisterSchedule">
+
+                                    @foreach (var sec in group)
+                                    {
+                                        @foreach (var openSection in sec.section.Status)
+                                        {
+                                            @Html.Hidden("scheduleIds", sec.schedule.IDScedule)
+                                        }
+                                    }
+
+                                    <button type="submit" onclick="Register()" style="border: none; background: none;"><i class="fa fa-check" aria-hidden="true"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p style="color:#aab1b9; font-size:1.5em; text-align: center ; margin:5px">No approved schedules available.</p>
+    }
+</div>
+
+
+<script>
+    function Register() {
+        alert("The Schedule Register..");
+    }
+
+    function Remove() {
+        alert("The schedule was removed from the wishlist..");
+    }
+</script>

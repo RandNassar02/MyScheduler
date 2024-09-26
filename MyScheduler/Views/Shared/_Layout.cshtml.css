@@ -1,0 +1,104 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+body {
+    background: #f5f6fa;
+    margin: 0;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: #fff;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/*sidebar*/
+#side_nav {
+    background: #5AA9E6;
+    min-width: 90px;
+    max-width: 90px;
+    border-radius: 1.5%;
+    flex-direction: column;
+}
+
+
+/*in sidebar logo*/
+.logo {
+    text-align: center;
+    font-weight: 555;
+    margin-top: 0.8em;
+    margin-bottom: 0.2em;
+}
+
+/*in sidebar profile*/
+.sidebar .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.4em 0;
+    padding: 0.4em;
+}
+
+.profile-circle {
+    width: 1.9em;
+    height: 1.9em;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    border: 2px solid #5AA9E6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 2em;
+    font-weight: bold;
+    color: #5AA9E6;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* item styles */
+.menu {
+    position: absolute;
+    bottom: 2.5em;
+}
+
+    .menu .nav-item .nav-link .sidIcon {
+        display: block;
+        padding: 0.2rem 1rem;
+        color: #ffffff;
+        font-size: 1.5em;
+        position: relative; 
+        text-align: center;
+    }
+
+.content {
+    min-height: 100vh;
+    width: 100%;
+    margin-left: 5em;
+}
+
+@media(max-width: 767px) {
+    .menu {
+        position: fixed;
+        bottom: 2.5em;
+    }
+    #side_nav {
+        margin-left: -250px;
+        position: absolute;
+        min-height: 100vh;
+        z-index: 1;
+    }
+
+        #side_nav.active {
+            margin-left: 0;
+        }
+    .content {
+        min-height: 100vh;
+        width: 100%;
+        margin-left: 0;
+    }
+}

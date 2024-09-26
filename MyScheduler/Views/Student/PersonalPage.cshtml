@@ -1,0 +1,187 @@
+﻿@model MyGP2webapp.Models.Student
+
+@{
+    ViewBag.Title = "Personal Page";
+
+}
+<style>
+    .title {
+        color: #5AA9E6;
+        font-size: 1.2em;
+        height: var(--small-title-height);
+    }
+
+    .text-small {
+        font-size: 0.9em;
+        font-weight: initial;
+    }
+
+    .sidebar .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0.4em 0;
+        padding: 0.4em;
+    }
+
+    .profile-circle {
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        background-color: #e9ecef;
+        border: 2px solid #5AA9E6;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        font-size: 2em;
+        font-weight: bold;
+        color: #5AA9E6;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .name {
+        font-size: 1.5em;
+    }
+</style>
+
+
+<div>
+    <h2 class="title">
+        <b>My Profile</b>
+    </h2>
+
+
+    <div class="card mb-5">
+        <div class="card-body">
+            <div class="mb-3 mx-auto position-relative">
+                <div class="col d-flex flex-column justify-content-between mb-4">
+                    <div class="d-flex mb-1">
+                        <div class="me-3 me-md-7">
+                            <div class="profile">
+                                <div class="profile-circle">
+                                    <b class="name">
+                                        @TempData["MasgName"]
+                                        @{
+                                            TempData.Keep("MasgName");
+                                        }
+                                    </b>
+
+                                </div>
+                            </div>
+                            <div class="mb-0">
+                                <b>
+                                    @if (!string.IsNullOrEmpty(Model.Name))
+                                    {
+                                        <p style="margin:0.3em"> @Model.Name</p>
+                                    }
+                                    else
+                                    {
+                                        <p><strong>Name:</strong> Information not available</p>
+                                    }
+                                </b>
+                                <b>
+                                    <p class="text-small text-muted mb-1">@Model.studyPlan.Major</p>
+                                </b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <b>
+                        <p class="text-small text-muted mb-2">
+                            Contact
+                        </p>
+                    </b>
+
+                    <div class="row g-0 mb-2">
+                        <div class="col-auto">
+                            <div class="sw-3 me-1">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col text-alternate">
+                            <p class="text-small text-muted mb-1">@Model.Email</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row g-0 mb-2">
+                        <div class="col-auto">
+                            <div class="sw-3 me-1">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col text-alternate">
+                            <p class="text-small text-muted mb-1">+962-781234567</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <h2 class="title">
+        <b>My Registered Schedule</b>
+    </h2>
+    <div class="card mb-5">
+
+        <div class="card">
+
+            <div class="table-responsive">
+
+                <b>
+                    @if (Model.schedules.Any(sc => sc.Approv_Schedule == 1))
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Course</th>
+                                    <th class="text-center">Teacher Name</th>
+                                    <th class="text-center">Section NO.</th>
+                                    <th class="text-center">Hall</th>
+                                    <th class="text-center">Sun</th>
+                                    <th class="text-center">Mon</th>
+                                    <th class="text-center">Wed</th>
+                                    <th class="text-center">Wed</th>
+                                    <th class="text-center">Thu</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var schedule in Model.schedules.Where(sc => sc.Approv_Schedule == 1))
+                                {
+                                    foreach (var sectionSchedule in schedule.sectionSchedules)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@sectionSchedule.section?.course?.CRS_A_NAME</td>
+                                            <td class="text-center">@sectionSchedule.section?.Instructors?.Name</td>
+                                            <td class="text-center">@sectionSchedule.section?.SectionNumber</td>
+                                            <td class="text-center">@sectionSchedule.section?.Hall</td>
+                                            <td class="text-center">@sectionSchedule.section?.Start_Sunday?.ToString("HH:mm")</td>
+                                            <td class="text-center">@sectionSchedule.section?.Start_Monday?.ToString("HH:mm")</td>
+                                            <td class="text-center">@sectionSchedule.section?.Start_Tuesday?.ToString("HH:mm")</td>
+                                            <td class="text-center">@sectionSchedule.section?.Start_Wednesday?.ToString("HH:mm")</td>
+                                            <td class="text-center">@sectionSchedule.section?.Start_Thursday?.ToString("HH:mm")</td>
+                                            <td class="text-center">@sectionSchedule.section?.Status</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p style="color:#aab1b9; font-size:1.5em; text-align: center ; margin:5px">No registered schedules available</p>
+                    }
+                </b>
+            </div>
+
+        </div>
+    </div>
+</div>
+

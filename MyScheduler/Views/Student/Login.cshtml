@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/styleLogin.css" asp-append-version="true" />
+
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form class="login-form" asp-controller="Student" asp-action="Login" method="post">
+            <h1>Welcome</h1>
+            <span>Login with your ASU account</span>
+            <input type="email" name="Email" placeholder="Your Email" required />
+            <input type="password" name="Password" placeholder="Your password" required />
+            <input class="Loginbutton submit" type="submit" id="btn-submit" value="Login" />
+            <br/>
+            <h6>
+                @TempData["Msg"]
+            </h6>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="~/images/image__1.png" class="d-block w-100" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/image__2.png" class="d-block w-100" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/image__3.png" class="d-block w-100" alt="Third slide">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+

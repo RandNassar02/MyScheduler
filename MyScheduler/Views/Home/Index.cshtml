@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .box {
+        height: 90vh;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 10px #5AA9E6;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scroll-box {
+        height: 90vh;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 10px #5AA9E6;
+        display: flex;
+
+    }
+
+    .box-content {
+        background-color: #f8f9fa;
+        padding: 5px;
+        border-radius: 10px;
+        flex-grow: 1;
+    }
+
+    .product-links {
+        text-align: right;
+    }
+
+        .product-links a {
+            display: inline-block;
+            margin-left: 5px;
+            color: #e1e1e1;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+            .product-links a:hover {
+                color: #5AA9E6;
+            }
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+       
+
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-content">
+                    <iframe src='https://webchat.botframework.com/embed/MyScheduleGP2chatbot?s=JV94SLXfsAI.BfItD4b2Q2ixI7-97JpTphcy_Sy19kRrz9q6gsh4y7o' style='min-width: 50%; width: 100%; min-height: 50%; height:100%'></iframe>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="scroll-box">
+                <div class="box-content">
+                    <iframe src="/Student/DisplaySchedules" style='min-width: 50%; width: 100%; min-height: 50%; height:100%'></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
