@@ -78,6 +78,3 @@ Contributions are welcome! Please follow these guidelines for contributing to th
 
 ## Acknowledgments
 Special thanks to my friend ( https://github.com/RandBuzieh ) for their support and contributions to this project.
-
-## License
-Include license information here.
